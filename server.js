@@ -21,6 +21,9 @@ app.use(express.json());
 
 //---Routes-------------------------------------------
 app.use("/api", apiRoutes);
+app.get("/", (req, res)=> {
+  res.send("LCR Backend API is running...");
+});
 
 
 // ── Connect to MongoDB then start server ──────────────────────────────────────
