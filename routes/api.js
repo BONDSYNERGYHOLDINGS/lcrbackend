@@ -4,7 +4,7 @@ const multer     = require("multer");
 const sharp = require("sharp");
 const path = require("path");
 const fetch      = require("node-fetch");
-const Submission = require("../models/Submission");
+const Submission = require("../models/submission");
 const cloudinary = require("../config/cloudinary");
 
 
