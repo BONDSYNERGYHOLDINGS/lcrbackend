@@ -13,7 +13,7 @@ const PORT = process.env.PORT
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors ({
-  origin: process.env.CLIENT_URL || "*",
+  origin: process.env.CLIENT_URL,
   methods:["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "x-admin-token"]
 }))
