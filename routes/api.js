@@ -119,6 +119,10 @@ router.post(
         data.pep = data.pep === "true";
       }
 
+      if (typeof data.conerpiece === "string") {
+        data.conerpiece = data.conerpiece === "true";
+      }
+
       if (typeof data.extraCharges === "string") {
   try {
     data.extraCharges = JSON.parse(data.extraCharges);
@@ -167,6 +171,25 @@ data.passportPhoto = imageUrl;
     }
   }
 );
+
+//======================================================================
+// POST /api/upload-signature
+//=======================================================================
+router.post("/upload-signature", upload.single("signatureFile"), async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: "No file" });
+    const result = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { folder: "signatures" },
+        (error, result) => error ? reject(error) : resolve(result)
+      );
+      stream.end(req.file.buffer);
+    });
+    res.json({ url: result.secure_url });
+  } catch (err) {
+    res.status(500).json({ error: "Upload failed", detail: err.message });
+  }
+});
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET /api/submissions  (admin only)

@@ -51,6 +51,7 @@ const SubmissionSchema = new mongoose.Schema(
     numberOfPlots: { type: String, default: "" },
     plotSize:      { type: String, default: "" },
     plotType:      { type: String, default: "" },
+    conerpiece:          { type: Boolean, default: false },
 
     // ── Extra Charges ─────────────────────────────────────────
 extraCharges: {
@@ -62,6 +63,7 @@ extraCharges: {
     declarationName: { type: String, default: "" },
     declarationOf:   { type: String, default: "" },
     signatureDate:   { type: String, default: "" },
+    signatureData:   { type: String, default: "" },
 
     // ── Document Pickup ───────────────────────────────────────
     documentPickup: { type: String, default: "" },
